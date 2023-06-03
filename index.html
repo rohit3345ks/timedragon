@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ERP Time Analysis</title>
+    <style>
+      body {
+        margin: 10vh 10vw;
+        background-color: whitesmoke;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div>
+      <form method="GET" action="/base.html" enctype="application/x-www-form-urlencoded">
+        <input name="token" type="text" required placeholder="Enter your token (can be picked from network calls headers)" />
+        <input name="empId" type="text" required placeholder="Employee ID (e.g. 999)" />
+        <button type="submit" id="process_btn">Process Biometric Punches</button>
+      </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

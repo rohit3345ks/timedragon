@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ERP Time Analysis</title>
+    <style>
+      body {
+        margin: 10vh 10vw;
+        background-color: whitesmoke;
+      }
+      #stats {
+        display: flex;
+        gap: 20px;
+      }
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stats">
+      <div id="in_duration">In Duration: <b></b></div>
+
+      <div id="time_left">Time left: <b></b></div>
+
+      <div id="complete_by">Complete By: <b></b></div>
+      
+      <div id="out_duration">Out Duration: <b></b></div>
+      
+      <div id="start_time">Start Time: <b></b></div>
+
+      <div id="total_duration">Total Duration: <b></b></div>
+
+      <div id="time_from_start">Time spent from Start Time: <b></b></div>
+    </div>
+    <div>
+      <i
+        >Note: Time spent till start time and total duration should be equal.</i
+      >
+    </div>
+    <br /><br />
+    <table border="1">
+      <tr>
+        <th>Time</th>
+        <th>Status</th>
+        <th>Duration</th>
+      </tr>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
