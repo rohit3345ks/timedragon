@@ -7,20 +7,22 @@
 
     <title>ERP Time Analysis</title>
     <style>
+      .d-flex {
+        display: flex;
+      }
       body {
-        margin: 10vh 10vw;
+        margin: 10vh 7.5vw;
         background-color: whitesmoke;
       }
       #stats {
-        display: flex;
-        gap: 20px;
+        gap: 50px;
       }
+      
       table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
         width: 100%;
       }
-
       td,
       th {
         border: 1px solid #dddddd;
@@ -30,11 +32,21 @@
       h1 {
         text-align: center;
       }
+      div.note {
+        width: 20px;
+        height: 20px;
+      }
+      div.note.green {
+        background-color: #CAF1DE;
+      }
+      div.note.red {
+        background-color: #FFE7C7;
+      }
     </style>
   </head>
   <body>
     <h1>Here you go!</h1>
-    <div id="stats">
+    <div id="stats" class="d-flex">
       <div id="in_duration">In Duration: <b></b></div>
 
       <div id="time_left">Time left: <b></b></div>
@@ -45,13 +57,14 @@
       
       <div id="start_time">Start Time: <b></b></div>
 
-      <div id="total_duration">Total Duration: <b></b></div>
+      <div id="total_duration" title="In Duration + Out Duration">Total Duration: <b></b></div>
 
       <div id="time_from_start">Time spent from Start Time: <b></b></div>
     </div>
+    <br />
     <div>
-      <i
-        >Note: Time spent till start time and total duration should be equal.</i
+      Note: <i
+        ><b>Time spent from start time</b> and <b>total duration</b> should be equal.</i
       >
     </div>
     <br /><br />
@@ -62,6 +75,11 @@
         <th>Duration</th>
       </tr>
     </table>
+    <br />
+    <div class="d-flex">
+      <div class="note green"></div> &nbsp; In Durations &nbsp; &nbsp;
+      <div class="note red"></div> &nbsp; Out Durations
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="script.js"></script>
   </body>

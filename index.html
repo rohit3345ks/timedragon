@@ -14,14 +14,17 @@
       h1 {
         text-align: center;
       }
+      input[name='token'] {
+        width: 40vw;
+      }
     </style>
   </head>
   <body>
     <h1>TimeDragon Application</h1>
     <div>
-      <form method="GET" action="/timedragon/base.html" enctype="application/x-www-form-urlencoded">
+      <form method="GET" action="/base.html" enctype="application/x-www-form-urlencoded">
         <input name="token" type="text" required placeholder="Enter your token (can be picked from network calls headers)" />
-        <input name="empId" type="text" required placeholder="Employee ID (e.g. 999)" />
+        <input name="empId" type="text" required placeholder="Employee ID (e.g. 999)" /> 
         <button type="submit" id="process_btn">Process Biometric Punches</button>
       </form>
     </div>

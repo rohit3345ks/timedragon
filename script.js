@@ -45,18 +45,19 @@ const fetchAndProcessPunches = async () => {
   processPunchesAndShowInUI(punches.data);
 };
 
-const formatMoment = (momentObject) => {
-  return `${momentObject.hours()}:${momentObject.minutes()}:${momentObject.seconds()}`;
+const getTwoDigitFormat = (value) => {
+  return value < 10 ? `0${value}` : value;
 };
+
 const formatDuration = (duration) => {
   // in milliseconds
   const momentDuration = moment.duration(duration);
-  return formatMoment(momentDuration);
+  return `${getTwoDigitFormat(momentDuration.hours())}:${getTwoDigitFormat(momentDuration.minutes())}:${getTwoDigitFormat(momentDuration.seconds())}`;;
 };
 
 const formatTime = (timeString) => {
   const momentTime = moment.utc(timeString);
-  return formatMoment(momentTime);
+  return momentTime.format('hh:mm:ss A');
 };
 
 const processPunchesAndShowInUI = (punches = []) => {
@@ -136,6 +137,7 @@ const showInUI = (punches, timeStats) => {
     statusCell.textContent = punch.devDirection;
     const timeDiffCell = document.createElement("td");
     timeDiffCell.textContent = punch?.timeDifference ?? "0:00:00";
+    row.style.backgroundColor = timeDiffCell.textContent.startsWith('-') ? '#FFE7C7' : '#CAF1DE';
     row.appendChild(timeCell);
     row.appendChild(statusCell);
     row.appendChild(timeDiffCell);
