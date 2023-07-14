@@ -5,6 +5,11 @@ const urlParams = new URLSearchParams(window.location.search);
 const token = urlParams?.get('token') ?? "";
 let empId = urlParams?.get('empId') ?? "";
 
+const devDirectionText = {
+  IN: 'You came in',
+  OUT: 'You went out'
+};
+
 const fetchAndProcessPunches = async () => {
   var myHeaders = new Headers();
   myHeaders.append(
@@ -87,11 +92,10 @@ const processPunchesAndShowInUI = (punches = []) => {
       punches[i + 1].devDirection === "IN"
     ) {
       outTime += adjancentTimeDifference;
-      sign = "-";
     }
     punches[i + 1] = {
       ...punches[i + 1],
-      timeDifference: `${sign}${formatDuration(adjancentTimeDifference)}`,
+      timeDifference: `${formatDuration(adjancentTimeDifference)}`,
     };
   }
 
@@ -129,15 +133,16 @@ const showInUI = (punches, timeStats) => {
     document.querySelector(`#${key} > b`).innerHTML = timeStats[key];
   });
 
-  punches.forEach((punch) => {
+  punches.forEach((punch, index) => {
+    if (index === punches.length - 1) return;
     const row = document.createElement("tr");
     const timeCell = document.createElement("td");
     timeCell.textContent = formatTime(punch.attPunchRecDate);
     const statusCell = document.createElement("td");
-    statusCell.textContent = punch.devDirection;
+    statusCell.textContent = devDirectionText[punch.devDirection];
     const timeDiffCell = document.createElement("td");
-    timeDiffCell.textContent = punch?.timeDifference ?? "0:00:00";
-    row.style.backgroundColor = timeDiffCell.textContent.startsWith('-') ? '#FFE7C7' : '#CAF1DE';
+    timeDiffCell.textContent = `after ${punch?.timeDifference ?? "0:00:00"}`;
+    row.style.backgroundColor = punch.devDirection === 'IN' && index !== 0 ? '#FFE7C7' : '#CAF1DE';
     row.appendChild(timeCell);
     row.appendChild(statusCell);
     row.appendChild(timeDiffCell);
