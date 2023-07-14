@@ -142,7 +142,6 @@ const showInUI = (punches, timeStats) => {
     statusCell.textContent = devDirectionText[punch.devDirection];
     const timeDiffCell = document.createElement("td");
     timeDiffCell.textContent = `after ${punch?.timeDifference ?? "0:00:00"}`;
-    row.style.backgroundColor = punch.devDirection === 'IN' && index !== 0 ? '#FFE7C7' : '#CAF1DE';
     row.appendChild(timeCell);
     row.appendChild(statusCell);
     row.appendChild(timeDiffCell);
