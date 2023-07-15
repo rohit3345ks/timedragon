@@ -52,7 +52,8 @@ const fetchAndProcessPunches = async () => {
 };
 
 const getTwoDigitFormat = (value) => {
-  return value < 10 ? `0${value}` : value;
+  const absoluteValue = Math.abs(value);
+  return `${value < 0 ? '-' : ''}${absoluteValue < 10 ? `0${absoluteValue}` : absoluteValue}`;
 };
 
 const formatDuration = (duration) => {
