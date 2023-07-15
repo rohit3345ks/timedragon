@@ -7,7 +7,8 @@ let empId = urlParams?.get('empId') ?? "";
 
 const devDirectionText = {
   IN: 'You came in',
-  OUT: 'You went out'
+  OUT: 'You went out',
+  LAST_INDEX: 'You are in'
 };
 
 const fetchAndProcessPunches = async () => {
@@ -134,14 +135,14 @@ const showInUI = (punches, timeStats) => {
   });
 
   punches.forEach((punch, index) => {
-    if (index === punches.length - 1) return;
+    const isLastIndex = index === punches.length - 1;
     const row = document.createElement("tr");
     const timeCell = document.createElement("td");
     timeCell.textContent = formatTime(punch.attPunchRecDate);
     const statusCell = document.createElement("td");
-    statusCell.textContent = devDirectionText[punch.devDirection];
+    statusCell.textContent = devDirectionText[isLastIndex ? 'LAST_INDEX' : punch.devDirection];
     const timeDiffCell = document.createElement("td");
-    timeDiffCell.textContent = `after ${punch?.timeDifference ?? "0:00:00"}`;
+    timeDiffCell.textContent = `${isLastIndex ? 'for' : 'after'} ${punch?.timeDifference ?? "0:00:00"}`;
     row.appendChild(timeCell);
     row.appendChild(statusCell);
     row.appendChild(timeDiffCell);
