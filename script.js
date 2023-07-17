@@ -5,10 +5,9 @@ const urlParams = new URLSearchParams(window.location.search);
 const token = urlParams?.get('token') ?? "";
 let empId = urlParams?.get('empId') ?? "";
 
-const devDirectionText = {
+const devDirectionTextMap = {
   IN: 'You came in',
   OUT: 'You went out',
-  LAST_INDEX: 'You are in'
 };
 
 const fetchAndProcessPunches = async () => {
@@ -137,11 +136,12 @@ const showInUI = (punches, timeStats) => {
 
   punches.forEach((punch, index) => {
     const isLastIndex = index === punches.length - 1;
+    const devDirectionText = isLastIndex ? `You are ${punches[index - 1].devDirection.toLowerCase()}` : devDirectionTextMap[punch.devDirection];
     const row = document.createElement("tr");
     const timeCell = document.createElement("td");
     timeCell.textContent = formatTime(punch.attPunchRecDate);
     const statusCell = document.createElement("td");
-    statusCell.textContent = devDirectionText[isLastIndex ? 'LAST_INDEX' : punch.devDirection];
+    statusCell.textContent = devDirectionText;
     const timeDiffCell = document.createElement("td");
     timeDiffCell.textContent = `${isLastIndex ? 'for' : 'after'} ${punch?.timeDifference ?? "0:00:00"}`;
     row.appendChild(timeCell);
