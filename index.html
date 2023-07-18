@@ -4,17 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
     <title>ERP Time Analysis</title>
     <style>
       body {
         margin: 10vh 10vw;
         background-color: whitesmoke;
+        font-family: "Montserrat", sans-serif;
       }
       h1 {
         text-align: center;
       }
-      input[name='token'] {
+      input[name="token"] {
         width: 40vw;
       }
     </style>
@@ -22,10 +30,26 @@
   <body>
     <h1>TimeDragon Application</h1>
     <div>
-      <form method="GET" action="/timedragon/base.html" enctype="application/x-www-form-urlencoded">
-        <input name="token" type="text" required placeholder="Enter your token (can be picked from network calls headers)" />
-        <input name="empId" type="text" required placeholder="Employee ID (e.g. 999)" /> 
-        <button type="submit" id="process_btn">Process Biometric Punches</button>
+      <form
+        method="GET"
+        action="/timedragon/base.html"
+        enctype="application/x-www-form-urlencoded"
+      >
+        <input
+          name="token"
+          type="text"
+          required
+          placeholder="Enter your token (can be picked from network calls headers)"
+        />
+        <input
+          name="empId"
+          type="text"
+          required
+          placeholder="Employee ID (e.g. 999)"
+        />
+        <button type="submit" id="process_btn">
+          Process Biometric Punches
+        </button>
       </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>

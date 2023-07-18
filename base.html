@@ -4,7 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="refresh" content="30">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <meta http-equiv="refresh" content="30" />
     <title>ERP Time Analysis</title>
     <style>
       .d-flex {
@@ -13,12 +21,13 @@
       body {
         margin: 10vh 7.5vw;
         background-color: whitesmoke;
+        font-family: "Montserrat", sans-serif;
       }
       #stats {
         gap: 50px;
         flex-flow: row wrap;
       }
-      
+
       table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
@@ -39,10 +48,10 @@
         height: 20px;
       }
       .green {
-        background-color: #CAF1DE;
+        background-color: #caf1de;
       }
       .red {
-        background-color: #FFE7C7;
+        background-color: #ffe7c7;
       }
     </style>
   </head>
@@ -54,25 +63,31 @@
       <div id="time_left">Time left: <b></b></div>
 
       <div id="complete_by">Complete By: <b></b></div>
-      
+
       <div id="out_duration">Out Duration: <b></b></div>
-      
+
       <div id="start_time">Start Time: <b></b></div>
 
-      <div id="total_duration" title="In Duration + Out Duration">Total Duration: <b></b></div>
+      <div id="total_duration" title="In Duration + Out Duration">
+        Total Duration: <b></b>
+      </div>
 
       <div id="time_from_start">Time spent from Start Time: <b></b></div>
     </div>
     <br />
     <div>
-      Note: <i
-        ><b>Time spent from start time</b> and <b>total duration</b> should be equal.</i
+      Note:
+      <i
+        ><b>Time spent from start time</b> and <b>total duration</b> should be
+        equal.</i
       >
     </div>
     <br />
     <div class="d-flex">
-      <div class="note green"></div> &nbsp; Work Time &nbsp; &nbsp;
-      <div class="note red"></div> &nbsp; Break Time
+      <div class="note green"></div>
+      &nbsp; Work Time &nbsp; &nbsp;
+      <div class="note red"></div>
+      &nbsp; Break Time
     </div>
     <br />
     <table border="1">
@@ -83,7 +98,9 @@
     </table>
     <br />
     <br />
-    <a target="_blank" href="https://forms.gle/V21wunHV5UktfEA1A">Submit feedback/Report a bug</a>
+    <a target="_blank" href="https://forms.gle/V21wunHV5UktfEA1A"
+      >Submit feedback/Report a bug</a
+    >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="script.js"></script>
   </body>
