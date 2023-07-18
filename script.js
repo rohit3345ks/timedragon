@@ -5,11 +5,6 @@ const urlParams = new URLSearchParams(window.location.search);
 const token = urlParams?.get('token') ?? "";
 let empId = urlParams?.get('empId') ?? "";
 
-const devDirectionTextMap = {
-  IN: 'You came in',
-  OUT: 'You went out',
-};
-
 const fetchAndProcessPunches = async () => {
   var myHeaders = new Headers();
   myHeaders.append(
@@ -69,7 +64,7 @@ const formatTime = (timeString) => {
 const processPunchesAndShowInUI = (punches = []) => {
   const lastEntry = {
     attPunchRecDate: moment().toString().replace("+0530", "+0000"),
-    devDirection: "OUT",
+    devDirection: punches[punches.length - 1].devDirection === "OUT" ? "IN" : "OUT",
   };
   punches.push(lastEntry);
 
@@ -136,16 +131,13 @@ const showInUI = (punches, timeStats) => {
 
   punches.forEach((punch, index) => {
     const isLastIndex = index === punches.length - 1;
-    const devDirectionText = isLastIndex ? `You are ${punches[index - 1].devDirection.toLowerCase()}` : devDirectionTextMap[punch.devDirection];
     const row = document.createElement("tr");
     const timeCell = document.createElement("td");
     timeCell.textContent = formatTime(punch.attPunchRecDate);
-    const statusCell = document.createElement("td");
-    statusCell.textContent = devDirectionText;
     const timeDiffCell = document.createElement("td");
-    timeDiffCell.textContent = `${isLastIndex ? 'for' : 'after'} ${punch?.timeDifference ?? "0:00:00"}`;
+    timeDiffCell.textContent = `${punch?.timeDifference ?? "0:00:00"} ${punch.devDirection === "IN" ? '✈️' : '🖥️'}`;
+    row.classList.add(punch.devDirection === 'IN' ? 'red' : 'green');
     row.appendChild(timeCell);
-    row.appendChild(statusCell);
     row.appendChild(timeDiffCell);
     document.querySelector("table").appendChild(row);
   });

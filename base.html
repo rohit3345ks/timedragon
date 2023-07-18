@@ -22,7 +22,8 @@
       table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
-        width: 100%;
+        width: 80%;
+        margin: auto;
       }
       td,
       th {
@@ -37,10 +38,10 @@
         width: 20px;
         height: 20px;
       }
-      div.note.green {
+      .green {
         background-color: #CAF1DE;
       }
-      div.note.red {
+      .red {
         background-color: #FFE7C7;
       }
     </style>
@@ -69,16 +70,20 @@
       >
     </div>
     <br />
+    <div class="d-flex">
+      <div class="note green"></div> &nbsp; Work Time &nbsp; &nbsp;
+      <div class="note red"></div> &nbsp; Break Time
+    </div>
     <br />
     <table border="1">
       <tr>
-        <th>Time</th>
-        <th>Status</th>
+        <th>Timestamp</th>
         <th>Duration</th>
       </tr>
     </table>
     <br />
-    
+    <br />
+    <a target="_blank" href="https://forms.gle/V21wunHV5UktfEA1A">Submit feedback/Report a bug</a>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="script.js"></script>
   </body>
